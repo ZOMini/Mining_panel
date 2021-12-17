@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 {% load static %}
-{% load user_filters %}
+{% load user_filters %} 
 <head>
-    <meta http-equiv="refresh" content="360">
+    <meta http-equiv="refresh" content="60">
 	<meta charset="UTF-8">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/fav/favicon-32x32.png'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 </head>
 <body>
     <div id="container">
-        <form action="{% url 'main:index' %}" method="get">
-        </form>
-    {% include 'main/index_2_inc.html' %} 
         <table id="device_stat" class="device_stat_default">
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
+        {% for name in mi_obj.0.mi_obj.gm_main %}
+            <td><b>{{name}}</b></td>
+        {% endfor %}
+        <tr></tr>
+        {% for num in mi_obj %}
+            {% for var in num.mi_obj.gm_main.values %}
+                <td>{{var}}</td>
+            {% endfor %}
+            <tr></tr>
+        {%endfor%}
         </table>
     </div>
     <div id="container_2">
+        <table id="device_stat" class="device_stat_default">
+        {% for name in mi_obj.0.mi_obj.gm_devices.0 %}
+            <td><b>{{name}}</b></td>
+        {% endfor %}
+        <tr></tr>
+        {% for rig in mi_obj %}
+            {% for device in rig.mi_obj.gm_devices %}
+                {% for var in device.values %}
+                  <td>{{var}}</td>
+                {% endfor %}
+                <tr></tr>    
+            {% endfor %}
+            <tr><td></td></tr>
+        {% endfor %}
+        </table>
     </div>
 </body>
