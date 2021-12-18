@@ -2,7 +2,7 @@
 {% load static %}
 {% load user_filters %} 
 <head>
-    <meta http-equiv="refresh" content="60">
+    <meta http-equiv="refresh" content="300">
 	<meta charset="UTF-8">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/fav/favicon-32x32.png'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
@@ -22,6 +22,7 @@
         {%endfor%}
         </table>
     </div>
+
     <div id="container_2">
         <table id="device_stat" class="device_stat_default">
         {% for name in mi_obj.0.mi_obj.gm_devices.0 %}
@@ -39,4 +40,39 @@
         {% endfor %}
         </table>
     </div>
+
+    <div id="container_2">
+        <table id="device_stat" class="device_stat_default">
+        {% for name in bin_obj.0.BTCUSDT %}
+            <td><b>{{name}}</b></td>
+        {% endfor %}
+            <tr></tr> 
+        {% for name in bin_obj %}
+            {% for i in name.values %}
+                {% for n in i.values %}
+                    {% if forloop.first %}
+                    <td>{{n}}</td>
+                    {% else %}
+                    <td>{{n|floatformat:4}}</td>
+                    {% endif %}
+                {%endfor%}
+                <tr></tr>
+            {%endfor%}
+        {%endfor%}
+        </table>
+    </div>
+
+    <div id="container_2">
+        <table id="device_stat" class="device_stat_default">
+        {% for name in pool_obj %}
+            <td><b>{{name}}</b></td>
+        {% endfor %}
+            <tr> </tr>
+        {% for var in pool_obj.values %}
+            <td> {{ var }} </td>
+        {% endfor %}
+        </table>
+    </div>
+
+
 </body>

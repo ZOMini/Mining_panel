@@ -6,7 +6,7 @@ from http import HTTPStatus
 import requests
 
 
-class MyDict():
+class MyDict:
     logging.basicConfig(
     filename=f'{__name__}.log',
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -23,7 +23,7 @@ class MyDict():
         gm_devices = self.gm_devices
         return print(gm_main, gm_devices)
  
-    def miner_api(self, adress:str = None):
+    def miner_api(self, adress):
         try:
             response = requests.get(adress)
         except Exception as e:
@@ -65,7 +65,7 @@ class MyDict():
         self.gm_devices = q1
 
 
-def main_miner(adress:str = None):
+def main_miner(adress):
     mi_obj = MyDict()
     mi_obj.miner_api(adress)
     mi_obj.parse_gminer()
