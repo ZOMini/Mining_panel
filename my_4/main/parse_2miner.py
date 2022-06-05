@@ -9,9 +9,6 @@ class PoolDict(MyDict):
         super().__init__(gm_response)
         self.pool_var = pool_var
         
-    def miner_api(self, adress):
-        super().miner_api(adress)
-        
     def parse_pool(self):
         pool_var = self.gm_response
         for item in ITEMS_DEL:

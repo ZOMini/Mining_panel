@@ -8,9 +8,6 @@ class BinDict(MyDict):
         super().__init__(gm_response,)
         self.bin_var = bin_var
         
-    def miner_api(self, adress):
-        super().miner_api(adress)
-
     def parse_gminer(self):
         bin_var = {}
         dict_var = {}
