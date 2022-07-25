@@ -1,4 +1,4 @@
-# my_project_4 (Mining Info Panel)
+# Mining Info Panel
 
 Аналаг 1,2 проекта, но работает по API (Django 2.2, парсинг и сереализация стандартными возможностями питона).
 
